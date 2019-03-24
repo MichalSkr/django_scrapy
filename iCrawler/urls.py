@@ -19,14 +19,13 @@ from rest_framework import routers
 from main import views
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'groups', views.GroupViewSet)
 router.register(r'stats', views.StatsViewSet, base_name='stats')
+router.register(r'stats/authors', views.StatsViewSet, base_name='stats_authors')
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('', include(router.urls)),
-    # path('stats/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
