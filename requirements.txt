@@ -5,3 +5,5 @@ Scrapy==1.5.1
 scrapy-djangoitem==1.1.1
 scrapyd==1.2.0
 djangorestframework==3.9.2
+stop-words==2018.7.23
+psycopg2==2.7.7

@@ -1,0 +1,26 @@
+version: '2'
+services:
+  web:
+    container_name: django_server
+    build: .
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8080 && cd scrapy_app/ & scrapyd && curl http://localhost:6800/schedule.json -d project=default -d spider=toscrape-xpath"
+    volumes:
+      - .:/code
+    ports:
+      - "8080"
+    depends_on:
+      - db
+    networks:
+      - backend
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - backend
+    environment:
+      POSTGRES_USER: michalsklyar
+      POSTGRES_PASSWORD: qwerty123
+networks:
+  backend:
+    driver: bridge

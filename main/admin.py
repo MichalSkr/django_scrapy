@@ -1,8 +1,5 @@
 from django.contrib import admin
-from main.models import Content
+from .models import Article, Author
 
-class ContentAdmin(admin.ModelAdmin):
-    list_display = ('word', 'number', )
-
-# Register your models here.
-admin.site.register(Content, ContentAdmin)
+admin.site.register(Article)
+admin.site.register(Author)
